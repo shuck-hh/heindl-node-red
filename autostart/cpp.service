@@ -4,7 +4,8 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/home/node/heindl-node-red/cpp/MatrixKeypad
+ExecStart=./MatrixKeypad
+WorkingDirectory=/home/node/heindl-node-red/cpp
 Restart=on-failure
 User=root
 
