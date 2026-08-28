@@ -1,0 +1,12 @@
+[Unit]
+Description=Python Service
+After=cpp.service
+
+[Service]
+Type=simple
+ExecStart=python /home/node/heindl-node-red/py/I2CLCD1602.py
+Restart=on-failure
+User=root
+
+[Install]
+WantedBy=multi-user.target

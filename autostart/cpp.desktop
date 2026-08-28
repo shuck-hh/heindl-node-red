@@ -1,6 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=C++ NodeRED
-Comment=Keypad-Steuerung
-Exec=sudo ./MatrixKeypad
-Path=/home/node/heindl-node-red/cpp
