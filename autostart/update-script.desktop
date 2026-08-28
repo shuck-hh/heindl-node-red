@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Update Project NodeRED
+Comment=Display-Steuerung
+Exec=bash update.sh
+Path=/home/node/heindl-node-red/
