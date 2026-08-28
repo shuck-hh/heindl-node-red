@@ -1,10 +1,4 @@
 #!/usr/bin/env python3
-########################################################################
-# Filename    : I2CLCD1602.py
-# Description : Use the LCD display data
-# Author      : freenove; modified to fit project usecase by: shuck 
-# modification: 2023/05/15
-########################################################################
 import os
 import smbus
 import time
@@ -14,27 +8,19 @@ from LCD1602 import CharLCD1602
 
 lcd1602 = CharLCD1602()   
 
-def get_cpu_temp():     # get CPU temperature from file "/sys/class/thermal/thermal_zone0/temp"
-    tmp = open('/sys/class/thermal/thermal_zone0/temp')
-    cpu = tmp.read()
-    tmp.close()
-    return '{:.2f}'.format( float(cpu)/1000 ) + ' C '
- 
-def get_time_now():     # get system time
-    return datetime.now().strftime('    %H:%M:%S')
-    
-def loop():
-    lcd1602.init_lcd()
-    count = 0
-    while(True):
-        # lcd1602.clear()
-        lcd1602.write(0, 0, "Hallo")# display CPU temperature
-        lcd1602.write(0, 1, get_time_now() )   # display the time
-        sleep(1)
-def destroy():
-    lcd1602.clear()
+content = ""
+selectedLine = None
+input_active = False  # NEU: merkt ob wir gerade schreiben
+contentLine1 = "MIN: "
+contentLine2 = "MAX: "
 
-def überwache_datei(dateipfad, intervall=1):
+def loop(dateipfad):
+    global content, selectedLine, input_active, contentLine1, contentLine2
+
+    lcd1602.init_lcd()
+    lcd1602.write(0, 0, "MIN: ")
+    lcd1602.write(0, 1, "MAX: ")
+
     try:
         letzter_status = os.path.getmtime(dateipfad)
     except FileNotFoundError:
@@ -46,21 +32,98 @@ def überwache_datei(dateipfad, intervall=1):
     while True:
         try:
             aktueller_status = os.path.getmtime(dateipfad)
-            
+
             if aktueller_status != letzter_status:
-                print("Datei wurde geändert!")
                 letzter_status = aktueller_status
+
+                with open(dateipfad, "r") as f:
+                    content = f.read().rstrip("\n")
+
+                print("Neuer Inhalt:", content)
+
+                # Steuerlogik
+                if content == "A":
+                    selectedLine = 0
+                    input_active = True
+                    if contentLine1 == None:
+                        print("Schreibe in Zeile 1")
+                    else:
+                        contentLine1 = None
+                        print("Schreibe in Zeile 1")
+
+                elif content == "B":
+                    selectedLine = 1
+                    input_active = True
+                    if contentLine2 == None:
+                        print("Schreibe in Zeile 2")
+                    else:
+                        contentLine2 = None
+                        print("Schreibe in Zeile 2")
+
+                elif content == "D":
+                    finishInput()
+
+                else:
+                    # Nur schreiben wenn aktiv
+                    if input_active:
+                        startInput(content)
 
         except FileNotFoundError:
             print("Datei wurde gelöscht oder ist nicht erreichbar!")
 
-        time.sleep(intervall)
+        time.sleep(0.2)
+
+
+def startInput(text):
+    global selectedLine, contentLine1, contentLine2
+
+    if selectedLine == 0:
+        if contentLine1 == None:
+            lcd1602.write(0, 0, "MIN: " + text.ljust(10))
+            contentLine1 = text
+        else:
+            contentLine1 = contentLine1 + text
+            lcd1602.write(0, 0, "MIN: " + contentLine1.ljust(10))
+    elif selectedLine == 1:
+        if contentLine2 == None:
+            lcd1602.write(0, 1, "MAX: " + text.ljust(10))
+            contentLine2 = text
+        else:
+            contentLine2 = contentLine2 + text
+            lcd1602.write(0, 1, "MAX: " + contentLine2.ljust(10))
+
+
+def finishInput():
+    global input_active, selectedLine, contentLine1, contentLine2
+
+    print("Eingabe beendet")
+    lcd1602.write(0, 0, "Wird gespeichert...")
+    time.sleep(5)
+    lcd1602.clear()
+    lcd1602.write(0, 0, "MIN: " + contentLine1 + "*C")
+    lcd1602.write(0, 1, "MAX: " + contentLine2 + "*C")
+    input_active = False
+    if selectedLine == 0:
+        # write (overwrite) the file
+        with open("min.txt", "w", encoding="utf-8") as f:
+            f.write(contentLine1)
+            print("MIN value in min.txt geschrieben")
+    elif selectedLine == 1:
+        with open("max.txt", "w", encoding="utf-8") as f:
+            f.write(contentLine2)
+            print("MAX value in max.txt geschrieben")
+    else:
+        print("Invalid Line")
+    selectedLine = None
+
+
+def destroy():
+    lcd1602.clear()
+
 
 if __name__ == '__main__':
-    print ('Program is starting ... ')
-    überwache_datei("../cpp/keys.txt", intervall=2)
+    print('Program is starting ... ')
     try:
-        loop()
+        loop("keys.txt")
     except KeyboardInterrupt:
         destroy()
-

@@ -1,10 +1,4 @@
 #!/usr/bin/env python3
-########################################################################
-# Filename    : LCD1602.py
-# Description : "Libary" for I2CLCD1602.py
-# Author      : freenove; modified to fit project usecase by: shuck 
-# modification: 2023/05/15
-########################################################################
 import time
 import smbus
 import subprocess
