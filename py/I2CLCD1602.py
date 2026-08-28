@@ -13,9 +13,10 @@ selectedLine = None
 input_active = False  # NEU: merkt ob wir gerade schreiben
 contentLine1 = "MIN: "
 contentLine2 = "MAX: "
+isBacklighting = True
 
 def loop(dateipfad):
-    global content, selectedLine, input_active, contentLine1, contentLine2
+    global content, selectedLine, input_active, contentLine1, contentLine2, isBacklighting
 
     lcd1602.init_lcd()
     lcd1602.write(0, 0, "MIN: ")
@@ -48,11 +49,13 @@ def loop(dateipfad):
                     if contentLine1 == None:
                         print("Schreibe in Zeile 1")
                         lcd1602.openlight()
+                        isBacklighting = True
                         time.sleep(0.005)
                     else:
                         contentLine1 = None
                         print("Schreibe in Zeile 1")
                         lcd1602.openlight()
+                        isBacklighting = True
                         time.sleep(0.005)
 
                 elif content == "B":
@@ -61,12 +64,25 @@ def loop(dateipfad):
                     if contentLine2 == None:
                         print("Schreibe in Zeile 2")
                         lcd1602.openlight()
+                        isBacklighting = True
                         time.sleep(0.005)
                     else:
                         contentLine2 = None
                         print("Schreibe in Zeile 2")
                         lcd1602.openlight()
+                        isBacklighting = True
                         time.sleep(0.005)
+
+                elif content == "C":
+                    if isBacklighting == True:
+                        lcd1602.closelight()
+                        isBacklighting = False
+                    elif isBacklighting == False:
+                        lcd1602.openlight()
+                        isBacklighting = True
+                    else:
+                        # Irgendwas ist _total_ schiefgegangen :|
+                        print("wtf")
 
                 elif content == "D":
                     finishInput()
@@ -102,7 +118,7 @@ def startInput(text):
 
 
 def finishInput():
-    global input_active, selectedLine, contentLine1, contentLine2
+    global input_active, selectedLine, contentLine1, contentLine2, isBacklighting
 
     print("Eingabe beendet")
     lcd1602.write(0, 0, "Wird gespeichert...")
@@ -127,6 +143,7 @@ def finishInput():
     selectedLine = None
     time.sleep(2)
     lcd1602.closelight()
+    isBacklighting = False
 
 
 
@@ -138,6 +155,6 @@ def destroy():
 if __name__ == '__main__':
     print('Program is starting ... ')
     try:
-        loop("keys.txt")
+        loop("../cpp/keys.txt")
     except KeyboardInterrupt:
         destroy()
