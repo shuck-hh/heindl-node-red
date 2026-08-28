@@ -9,6 +9,7 @@ A Node RED project of mine to controll the state of windows based on the tempera
 - wiringPi (there's a note in the cpp folder for that)
 - git
 - yad (only if update.sh is used) (install via ```sudo apt install yad```)
+- NodeRED for sure
 
 # Compile the C++ part
 

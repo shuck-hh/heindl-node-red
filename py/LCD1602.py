@@ -94,7 +94,11 @@ class CharLCD1602(object):
 
     def openlight(self):  # Enable the backlight
         self.bus.write_byte(0x27,0x08)
-        self.bus.close()
+        #self.bus.close()
+
+    def closelight(self):
+        self.bus.write_byte(0x27,0x00)
+        #self.bus.close()
 
     def write(self,x, y, str):
         if x < 0:

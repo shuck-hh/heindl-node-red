@@ -47,18 +47,26 @@ def loop(dateipfad):
                     input_active = True
                     if contentLine1 == None:
                         print("Schreibe in Zeile 1")
+                        lcd1602.openlight()
+                        time.sleep(0.005)
                     else:
                         contentLine1 = None
                         print("Schreibe in Zeile 1")
+                        lcd1602.openlight()
+                        time.sleep(0.005)
 
                 elif content == "B":
                     selectedLine = 1
                     input_active = True
                     if contentLine2 == None:
                         print("Schreibe in Zeile 2")
+                        lcd1602.openlight()
+                        time.sleep(0.005)
                     else:
                         contentLine2 = None
                         print("Schreibe in Zeile 2")
+                        lcd1602.openlight()
+                        time.sleep(0.005)
 
                 elif content == "D":
                     finishInput()
@@ -98,9 +106,11 @@ def finishInput():
 
     print("Eingabe beendet")
     lcd1602.write(0, 0, "Wird gespeichert...")
-    time.sleep(5)
+    time.sleep(2)
     lcd1602.clear()
+    print("contentLine1: "+ contentLine1)
     lcd1602.write(0, 0, "MIN: " + contentLine1 + "*C")
+    print("contentLine2: "+ contentLine2)
     lcd1602.write(0, 1, "MAX: " + contentLine2 + "*C")
     input_active = False
     if selectedLine == 0:
@@ -115,6 +125,10 @@ def finishInput():
     else:
         print("Invalid Line")
     selectedLine = None
+    time.sleep(2)
+    lcd1602.closelight()
+
+
 
 
 def destroy():
