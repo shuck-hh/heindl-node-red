@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Python NodeRED
+Comment=Display-Steuerung
+Exec=pyhton I2CLCD1602.py
+Path=/home/node/heindl-node-red/py
