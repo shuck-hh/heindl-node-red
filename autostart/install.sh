@@ -14,4 +14,3 @@ sudo systemctl enable heindl-update.service
 # 4. Start
 sudo systemctl start py.service
 sudo systemctl start cpp.service
-sudo systemctl start heindl-update.service
