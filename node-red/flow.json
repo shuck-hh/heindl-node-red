@@ -31,8 +31,8 @@
         "checkall": "false",
         "repair": false,
         "outputs": 2,
-        "x": 850,
-        "y": 280,
+        "x": 1130,
+        "y": 320,
         "wires": [
             [
                 "52b355c53ea34ee6",
@@ -54,8 +54,8 @@
         "freq": "",
         "out": "out",
         "bcm": true,
-        "x": 1270,
-        "y": 280,
+        "x": 1550,
+        "y": 320,
         "wires": []
     },
     {
@@ -75,8 +75,8 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 1130,
-        "y": 340,
+        "x": 1410,
+        "y": 380,
         "wires": [
             [
                 "7fceee3f6e487264"
@@ -107,8 +107,8 @@
         "checkall": "false",
         "repair": false,
         "outputs": 2,
-        "x": 730,
-        "y": 680,
+        "x": 1110,
+        "y": 640,
         "wires": [
             [
                 "87ced5062266f4c6",
@@ -130,8 +130,8 @@
         "freq": "",
         "out": "out",
         "bcm": true,
-        "x": 1150,
-        "y": 680,
+        "x": 1530,
+        "y": 640,
         "wires": []
     },
     {
@@ -151,8 +151,8 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 990,
-        "y": 740,
+        "x": 1370,
+        "y": 700,
         "wires": [
             [
                 "6d62c6d1e107840a"
@@ -180,8 +180,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 230,
-        "y": 220,
+        "x": 150,
+        "y": 260,
         "wires": [
             [
                 "235d321267955657"
@@ -209,8 +209,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 130,
-        "y": 620,
+        "x": 170,
+        "y": 580,
         "wires": [
             [
                 "87c12c1e9d6014cf"
@@ -229,8 +229,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 560,
-        "y": 800,
+        "x": 600,
+        "y": 760,
         "wires": []
     },
     {
@@ -250,8 +250,8 @@
         "bytopic": "all",
         "topic": "topic",
         "outputs": 1,
-        "x": 1090,
-        "y": 280,
+        "x": 1370,
+        "y": 320,
         "wires": [
             [
                 "7ab370dd185c8125"
@@ -275,8 +275,8 @@
         "bytopic": "all",
         "topic": "topic",
         "outputs": 1,
-        "x": 970,
-        "y": 680,
+        "x": 1350,
+        "y": 640,
         "wires": [
             [
                 "0ce037ec54db6cf0"
@@ -292,11 +292,11 @@
         "sensorid": "28-4514720a6461",
         "timer": "300",
         "repeat": true,
-        "x": 620,
-        "y": 280,
+        "x": 540,
+        "y": 320,
         "wires": [
             [
-                "fc163833815c588b"
+                "d2ad966de98899b3"
             ]
         ]
     },
@@ -309,11 +309,11 @@
         "sensorid": "28-4514720a6461",
         "timer": "300",
         "repeat": true,
-        "x": 500,
-        "y": 680,
+        "x": 540,
+        "y": 640,
         "wires": [
             [
-                "246086b3806132d5"
+                "78a967e1e0f26eef"
             ]
         ]
     },
@@ -326,8 +326,8 @@
         "sensorid": "28-4514720a6461",
         "timer": "5",
         "repeat": true,
-        "x": 350,
-        "y": 800,
+        "x": 390,
+        "y": 760,
         "wires": [
             [
                 "b7572e83bc43bc36"
@@ -341,8 +341,8 @@
         "name": "MIN",
         "files": "/home/node/heindl-node-red/py/min.txt",
         "recursive": "",
-        "x": 490,
-        "y": 500,
+        "x": 530,
+        "y": 460,
         "wires": [
             [
                 "0ea6a24c0c763735"
@@ -356,8 +356,8 @@
         "name": "MAX",
         "files": "/home/node/heindl-node-red/py/max.txt",
         "recursive": "",
-        "x": 630,
-        "y": 100,
+        "x": 550,
+        "y": 140,
         "wires": [
             [
                 "8f53ed19d67fb8d1"
@@ -376,8 +376,8 @@
         "sendError": false,
         "encoding": "none",
         "allProps": false,
-        "x": 490,
-        "y": 560,
+        "x": 530,
+        "y": 520,
         "wires": [
             [
                 "4ed9e83adba44c73"
@@ -396,8 +396,8 @@
         "sendError": false,
         "encoding": "none",
         "allProps": false,
-        "x": 630,
-        "y": 160,
+        "x": 550,
+        "y": 200,
         "wires": [
             [
                 "12228dd349445844"
@@ -423,8 +423,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 500,
-        "y": 620,
+        "x": 540,
+        "y": 580,
         "wires": [
             [
                 "6d62c6d1e107840a"
@@ -450,8 +450,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 630,
-        "y": 220,
+        "x": 550,
+        "y": 260,
         "wires": [
             [
                 "7fceee3f6e487264"
@@ -470,8 +470,8 @@
         "sendError": false,
         "encoding": "none",
         "allProps": false,
-        "x": 390,
-        "y": 220,
+        "x": 310,
+        "y": 260,
         "wires": [
             [
                 "5274468f5180d8b6"
@@ -497,8 +497,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 410,
-        "y": 280,
+        "x": 330,
+        "y": 320,
         "wires": [
             [
                 "7fceee3f6e487264"
@@ -517,8 +517,8 @@
         "sendError": false,
         "encoding": "none",
         "allProps": false,
-        "x": 290,
-        "y": 620,
+        "x": 330,
+        "y": 580,
         "wires": [
             [
                 "2a945b0e0b00cf2c"
@@ -544,8 +544,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 300,
-        "y": 680,
+        "x": 340,
+        "y": 640,
         "wires": [
             [
                 "6d62c6d1e107840a"
@@ -553,7 +553,143 @@
         ]
     },
     {
-        "id": "487c500b5d71d72f",
+        "id": "cf102f40b1640b28",
+        "type": "rpi-gpio in",
+        "z": "271d5de331cd0d1a",
+        "name": "",
+        "pin": "26",
+        "intype": "tri",
+        "debounce": "25",
+        "read": true,
+        "bcm": true,
+        "x": 730,
+        "y": 260,
+        "wires": [
+            [
+                "c4472dcd30d609ef"
+            ]
+        ]
+    },
+    {
+        "id": "d2ad966de98899b3",
+        "type": "switch",
+        "z": "271d5de331cd0d1a",
+        "name": "nur weitermachen wenn global.pin37 == 1",
+        "property": "pin37",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 820,
+        "y": 320,
+        "wires": [
+            [
+                "fc163833815c588b"
+            ]
+        ]
+    },
+    {
+        "id": "c4472dcd30d609ef",
+        "type": "change",
+        "z": "271d5de331cd0d1a",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "pin37",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 890,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0282df57e20e55dc",
+        "type": "rpi-gpio in",
+        "z": "271d5de331cd0d1a",
+        "name": "",
+        "pin": "16",
+        "intype": "tri",
+        "debounce": "25",
+        "read": true,
+        "bcm": true,
+        "x": 710,
+        "y": 580,
+        "wires": [
+            [
+                "c6d38becc9f7dcbb"
+            ]
+        ]
+    },
+    {
+        "id": "78a967e1e0f26eef",
+        "type": "switch",
+        "z": "271d5de331cd0d1a",
+        "name": "nur weitermachen wenn global.pin36 == 1",
+        "property": "pin37",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 800,
+        "y": 640,
+        "wires": [
+            [
+                "246086b3806132d5"
+            ]
+        ]
+    },
+    {
+        "id": "c6d38becc9f7dcbb",
+        "type": "change",
+        "z": "271d5de331cd0d1a",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "pin36",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 870,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1a3f604d0727bd97",
         "type": "global-config",
         "env": [],
         "modules": {
