@@ -5,6 +5,20 @@ REPO_URL="https://github.com/shuck-hh/heindl-node-red.git"
 
 # Working directory
 WORK_DIR="/home/node/heindl-node-red"
+LOCK_FILE="/tmp/heindl-node-red-update.lock"
+
+cleanup() {
+    rm -f "$LOCK_FILE"
+}
+
+trap cleanup EXIT
+
+if [ -f "$LOCK_FILE" ]; then
+    echo "Update already executed once during this boot. Exiting."
+    exit 0
+fi
+
+touch "$LOCK_FILE"
 
 cd "$WORK_DIR" || exit 1
 
@@ -39,6 +53,9 @@ if ! git diff --quiet HEAD origin/HEAD; then
     cd heindl-node-red/autostart/
     bash install.sh
 
+    # Prevent the boot-triggered service from running again after reboot.
+    sudo systemctl disable --now heindl-update.service || true
+
     echo "Update done."
 
     # Reboot
@@ -46,4 +63,5 @@ if ! git diff --quiet HEAD origin/HEAD; then
     sudo reboot
 else
     echo "No changes detected."
+    exit 0
 fi
