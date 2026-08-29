@@ -1,0 +1,564 @@
+[
+    {
+        "id": "271d5de331cd0d1a",
+        "type": "tab",
+        "label": "Heindl",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "fc163833815c588b",
+        "type": "switch",
+        "z": "271d5de331cd0d1a",
+        "name": "if-Teil von Temp > max°C",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gte",
+                "v": "max",
+                "vt": "global"
+            },
+            {
+                "t": "btwn",
+                "v": "max",
+                "vt": "global",
+                "v2": "min",
+                "v2t": "global"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 850,
+        "y": 280,
+        "wires": [
+            [
+                "52b355c53ea34ee6",
+                "5af7aaf26098d46b"
+            ],
+            [
+                "52b355c53ea34ee6"
+            ]
+        ]
+    },
+    {
+        "id": "7ab370dd185c8125",
+        "type": "rpi-gpio out",
+        "z": "271d5de331cd0d1a",
+        "name": "Relais 1 (BCM 6)",
+        "pin": "6",
+        "set": true,
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "bcm": true,
+        "x": 1270,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "52b355c53ea34ee6",
+        "type": "delay",
+        "z": "271d5de331cd0d1a",
+        "name": "5 min warte",
+        "pauseType": "delay",
+        "timeout": "2",
+        "timeoutUnits": "minutes",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 1130,
+        "y": 340,
+        "wires": [
+            [
+                "7fceee3f6e487264"
+            ]
+        ]
+    },
+    {
+        "id": "246086b3806132d5",
+        "type": "switch",
+        "z": "271d5de331cd0d1a",
+        "name": "if-Teil von Temp < min°C",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "lte",
+                "v": "min",
+                "vt": "global"
+            },
+            {
+                "t": "btwn",
+                "v": "max",
+                "vt": "global",
+                "v2": "min",
+                "v2t": "global"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 730,
+        "y": 680,
+        "wires": [
+            [
+                "87ced5062266f4c6",
+                "de963b6a41b67fe9"
+            ],
+            [
+                "87ced5062266f4c6"
+            ]
+        ]
+    },
+    {
+        "id": "0ce037ec54db6cf0",
+        "type": "rpi-gpio out",
+        "z": "271d5de331cd0d1a",
+        "name": "Relais 2 (BCM 5)",
+        "pin": "5",
+        "set": true,
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "bcm": true,
+        "x": 1150,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "87ced5062266f4c6",
+        "type": "delay",
+        "z": "271d5de331cd0d1a",
+        "name": "5 min warte",
+        "pauseType": "delay",
+        "timeout": "2",
+        "timeoutUnits": "minutes",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 990,
+        "y": 740,
+        "wires": [
+            [
+                "6d62c6d1e107840a"
+            ]
+        ]
+    },
+    {
+        "id": "0ffab47b57f9774f",
+        "type": "inject",
+        "z": "271d5de331cd0d1a",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.1",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 230,
+        "y": 220,
+        "wires": [
+            [
+                "235d321267955657"
+            ]
+        ]
+    },
+    {
+        "id": "f12fe6e7a3972f0b",
+        "type": "inject",
+        "z": "271d5de331cd0d1a",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.1",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 620,
+        "wires": [
+            [
+                "87c12c1e9d6014cf"
+            ]
+        ]
+    },
+    {
+        "id": "b7572e83bc43bc36",
+        "type": "debug",
+        "z": "271d5de331cd0d1a",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 560,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "5af7aaf26098d46b",
+        "type": "trigger",
+        "z": "271d5de331cd0d1a",
+        "name": "10s an",
+        "op1": "1",
+        "op2": "0",
+        "op1type": "str",
+        "op2type": "str",
+        "duration": "10",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 1090,
+        "y": 280,
+        "wires": [
+            [
+                "7ab370dd185c8125"
+            ]
+        ]
+    },
+    {
+        "id": "de963b6a41b67fe9",
+        "type": "trigger",
+        "z": "271d5de331cd0d1a",
+        "name": "10s an",
+        "op1": "1",
+        "op2": "0",
+        "op1type": "str",
+        "op2type": "str",
+        "duration": "10",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 970,
+        "y": 680,
+        "wires": [
+            [
+                "0ce037ec54db6cf0"
+            ]
+        ]
+    },
+    {
+        "id": "7fceee3f6e487264",
+        "type": "sensor-ds18b20",
+        "z": "271d5de331cd0d1a",
+        "name": "Temp > max°C",
+        "topic": "",
+        "sensorid": "28-4514720a6461",
+        "timer": "300",
+        "repeat": true,
+        "x": 620,
+        "y": 280,
+        "wires": [
+            [
+                "fc163833815c588b"
+            ]
+        ]
+    },
+    {
+        "id": "6d62c6d1e107840a",
+        "type": "sensor-ds18b20",
+        "z": "271d5de331cd0d1a",
+        "name": "Temp < min°C",
+        "topic": "",
+        "sensorid": "28-4514720a6461",
+        "timer": "300",
+        "repeat": true,
+        "x": 500,
+        "y": 680,
+        "wires": [
+            [
+                "246086b3806132d5"
+            ]
+        ]
+    },
+    {
+        "id": "97d8b1e001d7cd30",
+        "type": "sensor-ds18b20",
+        "z": "271d5de331cd0d1a",
+        "name": "",
+        "topic": "",
+        "sensorid": "28-4514720a6461",
+        "timer": "5",
+        "repeat": true,
+        "x": 350,
+        "y": 800,
+        "wires": [
+            [
+                "b7572e83bc43bc36"
+            ]
+        ]
+    },
+    {
+        "id": "ab29573650d6f8b4",
+        "type": "watch",
+        "z": "271d5de331cd0d1a",
+        "name": "MIN",
+        "files": "/home/node/heindl-node-red/py/min.txt",
+        "recursive": "",
+        "x": 490,
+        "y": 500,
+        "wires": [
+            [
+                "0ea6a24c0c763735"
+            ]
+        ]
+    },
+    {
+        "id": "3fbdbb0c9b50d878",
+        "type": "watch",
+        "z": "271d5de331cd0d1a",
+        "name": "MAX",
+        "files": "/home/node/heindl-node-red/py/max.txt",
+        "recursive": "",
+        "x": 630,
+        "y": 100,
+        "wires": [
+            [
+                "8f53ed19d67fb8d1"
+            ]
+        ]
+    },
+    {
+        "id": "0ea6a24c0c763735",
+        "type": "file in",
+        "z": "271d5de331cd0d1a",
+        "name": "read min.txt",
+        "filename": "/home/node/heindl-node-red/py/min.txt",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 490,
+        "y": 560,
+        "wires": [
+            [
+                "4ed9e83adba44c73"
+            ]
+        ]
+    },
+    {
+        "id": "8f53ed19d67fb8d1",
+        "type": "file in",
+        "z": "271d5de331cd0d1a",
+        "name": "read max.txt",
+        "filename": "/home/node/heindl-node-red/py/max.txt",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 630,
+        "y": 160,
+        "wires": [
+            [
+                "12228dd349445844"
+            ]
+        ]
+    },
+    {
+        "id": "4ed9e83adba44c73",
+        "type": "change",
+        "z": "271d5de331cd0d1a",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "min",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 500,
+        "y": 620,
+        "wires": [
+            [
+                "6d62c6d1e107840a"
+            ]
+        ]
+    },
+    {
+        "id": "12228dd349445844",
+        "type": "change",
+        "z": "271d5de331cd0d1a",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "max",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 630,
+        "y": 220,
+        "wires": [
+            [
+                "7fceee3f6e487264"
+            ]
+        ]
+    },
+    {
+        "id": "235d321267955657",
+        "type": "file in",
+        "z": "271d5de331cd0d1a",
+        "name": "read max.txt",
+        "filename": "/home/node/heindl-node-red/py/max.txt",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 390,
+        "y": 220,
+        "wires": [
+            [
+                "5274468f5180d8b6"
+            ]
+        ]
+    },
+    {
+        "id": "5274468f5180d8b6",
+        "type": "change",
+        "z": "271d5de331cd0d1a",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "max",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 410,
+        "y": 280,
+        "wires": [
+            [
+                "7fceee3f6e487264"
+            ]
+        ]
+    },
+    {
+        "id": "87c12c1e9d6014cf",
+        "type": "file in",
+        "z": "271d5de331cd0d1a",
+        "name": "read min.txt",
+        "filename": "/home/node/heindl-node-red/py/min.txt",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 290,
+        "y": 620,
+        "wires": [
+            [
+                "2a945b0e0b00cf2c"
+            ]
+        ]
+    },
+    {
+        "id": "2a945b0e0b00cf2c",
+        "type": "change",
+        "z": "271d5de331cd0d1a",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "min",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 300,
+        "y": 680,
+        "wires": [
+            [
+                "6d62c6d1e107840a"
+            ]
+        ]
+    },
+    {
+        "id": "487c500b5d71d72f",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-node-pi-gpio": "2.0.7",
+            "node-red-contrib-sensor-ds18b20": "0.2.0"
+        }
+    }
+]
