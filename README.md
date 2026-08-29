@@ -6,7 +6,7 @@ A Node RED project of mine to controll the state of windows based on the tempera
 > This is only public so that I can update my project via this repo! It is not intended to be used by anyone else although it's not forbidden!
 
 > [!IMPORTANT]
-> update.sh is not working at the moment, including the desktop entry
+> update.sh is not working at the moment, including the desktop entry DO NOT USE IT!
 
 # Requirements
 - wiringPi (there's a note in the cpp folder for that)
