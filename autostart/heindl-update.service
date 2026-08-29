@@ -1,0 +1,13 @@
+[Unit]
+Description=Run Heindl Node-RED update script after boot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=root
+WorkingDirectory=/home/node/heindl-node-red
+ExecStart=/bin/bash /home/node/heindl-node-red/update.sh
+
+[Install]
+WantedBy=multi-user.target
