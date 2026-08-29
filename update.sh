@@ -15,7 +15,7 @@ if ! curl -fsSL --max-time 5 https://github.com >/dev/null 2>&1; then
 fi
 
 # Fetch the latest information from GitHub
-git fetch origin
+git fetch origin -q
 
 # Check whether the local working tree differs from origin
 if ! git diff --quiet HEAD origin/HEAD; then
@@ -32,7 +32,7 @@ if ! git diff --quiet HEAD origin/HEAD; then
     sudo rm -r -f heindl-node-red
 
     # Clone again
-    git clone "$REPO_URL"
+    git clone "$REPO_URL" -q
 
     # Re-install the services
     echo "Reinstalling services..."
