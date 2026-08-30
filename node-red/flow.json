@@ -32,7 +32,7 @@
         "repair": false,
         "outputs": 2,
         "x": 1130,
-        "y": 320,
+        "y": 300,
         "wires": [
             [
                 "52b355c53ea34ee6",
@@ -108,7 +108,7 @@
         "repair": false,
         "outputs": 2,
         "x": 1110,
-        "y": 640,
+        "y": 620,
         "wires": [
             [
                 "87ced5062266f4c6",
@@ -582,16 +582,24 @@
                 "t": "eq",
                 "v": "1",
                 "vt": "num"
+            },
+            {
+                "t": "neq",
+                "v": "1",
+                "vt": "num"
             }
         ],
-        "checkall": "true",
+        "checkall": "false",
         "repair": false,
-        "outputs": 1,
+        "outputs": 2,
         "x": 820,
         "y": 320,
         "wires": [
             [
                 "fc163833815c588b"
+            ],
+            [
+                "52b355c53ea34ee6"
             ]
         ]
     },
@@ -650,16 +658,24 @@
                 "t": "eq",
                 "v": "1",
                 "vt": "num"
+            },
+            {
+                "t": "neq",
+                "v": "1",
+                "vt": "num"
             }
         ],
-        "checkall": "true",
+        "checkall": "false",
         "repair": false,
-        "outputs": 1,
+        "outputs": 2,
         "x": 800,
         "y": 640,
         "wires": [
             [
                 "246086b3806132d5"
+            ],
+            [
+                "87ced5062266f4c6"
             ]
         ]
     },
@@ -689,7 +705,7 @@
         ]
     },
     {
-        "id": "1a3f604d0727bd97",
+        "id": "4762213e2a0cd2b8",
         "type": "global-config",
         "env": [],
         "modules": {
